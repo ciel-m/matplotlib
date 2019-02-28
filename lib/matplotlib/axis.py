@@ -1736,6 +1736,11 @@ class Axis(martist.Artist):
                 self.set_view_interval(min(ticks), max(ticks))
             else:
                 self.set_view_interval(max(ticks), min(ticks))
+        elif len(ticks) == 1:
+            if ticks[0] > 0:
+                self.set_view_interval(0, ticks[0])
+            else:
+                self.set_view_interval(ticks[0], 0)
         if minor:
             self.set_minor_locator(mticker.FixedLocator(ticks))
             return self.get_minor_ticks(len(ticks))
